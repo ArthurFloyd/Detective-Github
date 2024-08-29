@@ -1,7 +1,7 @@
 // import { Provider } from 'react-redux';
 
-// import NavBar from './components/NavBar';
-import HomePage from './components/Home';
+import NavBar from './components/NavBar';
+// import HomePage from './components/Home';
 // import SearchPage from './components/Search';
 // import { store } from './store/index.js';
 
@@ -9,8 +9,8 @@ import HomePage from './components/Home';
 
 const App = () => (
   // <Provider store={store}>
-  //   <NavBar />
-  <HomePage />
+  <NavBar />
+  // <HomePage />
   //   <SearchPage />
   // </Provider>
 );
