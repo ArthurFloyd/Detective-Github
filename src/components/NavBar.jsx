@@ -3,7 +3,7 @@ import {
   FormControl, OutlinedInput, Toolbar, Box, AppBar, Button,
 } from '@mui/material';
 
-// import { useGetReposQuery } from '../api/githubRepoApi';
+import { useGetReposQuery } from '../api/githubReposApi';
 // import { store } from './store/index.js';
 
 const NavBar = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
     inputRef.current.focus();
   }, []);
 
-  // const { data } = useGetReposQuery(value);
+  const { data } = useGetReposQuery('Duel');
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -35,7 +35,7 @@ const NavBar = () => {
           <Button
             variant="contained"
             onClick={() => {
-              // console.log('data', data);
+              console.log('data', data);
             }}
             sx={{
               top: 9, left: 6, padding: '8px 22px 8px 22px', gap: 0, background: '#113047',
