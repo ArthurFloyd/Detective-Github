@@ -14,7 +14,8 @@ const NavBar = () => {
     inputRef.current.focus();
   }, []);
 
-  const { data } = useGetReposQuery('Duel');
+  const { data } = useGetReposQuery(value);
+  // console.log('value', useGetReposQuery(value))
 
   return (
     <Box sx={{ flexGrow: 1 }}>
