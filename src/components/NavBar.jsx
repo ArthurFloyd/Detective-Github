@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 
 import { useGetReposQuery } from '../api/githubReposApi';
-import { store } from '../store/index.js';
+// import { store } from '../store/index.js';
 
 const NavBar = () => {
   const [value, setValue] = useState('');
@@ -15,7 +15,6 @@ const NavBar = () => {
   }, []);
 
   const { data } = useGetReposQuery(value);
-  // console.log('value', useGetReposQuery(value))
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -36,12 +35,7 @@ const NavBar = () => {
           <Button
             variant="contained"
             onClick={() => {
-              try {
-                console.log('data', data);
-                console.log('store', store.getState());
-              } catch (err) {
-                console.log('err', err)
-              }
+              // console.log('data', data.items[0]);
             }}
             sx={{
               top: 9, left: 6, padding: '8px 22px 8px 22px', gap: 0, background: '#113047',
