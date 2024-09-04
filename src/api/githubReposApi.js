@@ -7,6 +7,7 @@ export const githubReposApi = createApi({
     getRepos: builder.query({
       query: (name) => `?q=${name}`,
     }),
+
   }),
 });
 

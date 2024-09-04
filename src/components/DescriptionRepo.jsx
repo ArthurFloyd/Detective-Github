@@ -1,23 +1,20 @@
-// import { useGetReposQuery } from '../api/githubReposApi';
+import { useGetReposQuery } from '../api/githubReposApi';
 
 
-const DescriptionRepo = ({ activeRepoData }) => {
+const DescriptionRepo = ({ activeId }) => {
 
-  // const { data } = useGetReposQuery();
+  const { data } = useGetReposQuery();
 
-  // const getRepo = (data) => {
-  //   const activeName = data.items.filter((item) => item.id === activeId);
-  //   return activeName;
-  // }
-
+  const selectedRepo = data?.items?.find(item => item.id === activeId);
+  // console.log('data', data)
+  // console.log('items', data.items)
   return (
     <div>
-      <h2>{activeRepoData.name}</h2>
-      <p>{activeRepoData.language}</p>
-      <p>{activeRepoData.stars}</p>
-      {/* <p>{activeRepoData.license}</p> */}
+      <h2>Название репозитория</h2>
+      <p>{selectedRepo ? selectedRepo.name : 'Выберете репозиторий'}</p>
     </div>
-  )
+  );
 };
+
 
 export default DescriptionRepo;

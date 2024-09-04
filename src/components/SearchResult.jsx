@@ -18,7 +18,7 @@ const dateParse = (isoDate) => {
 
 const SearchResult = ({ nameRepos }) => {
 
-  const [activeRepoData, setActiveRepoData] = useState({});
+  const [activeIdRepo, setActiveIdRepo] = useState(null);
 
   const { data } = useGetReposQuery(nameRepos);
 
@@ -28,20 +28,15 @@ const SearchResult = ({ nameRepos }) => {
     language: item.language,
     forks: item.forks,
     stars: item.stargazers_count,
-    // license: item.license.name,
     dateUpdate: dateParse(item.updated_at),
   }));
 
   const columns = [
     {
       field: 'name', headerName: 'Название', width: 130, renderCell: (params) => (
-        <div onClick={() => setActiveRepoData({
-          name: params.row.name,
-          language: params.row.language,
-          stars: params.row.stars,
-          // license: params.row.license,
-        })}>
+        <div onClick={() => setActiveIdRepo(params.row.id)}>
           {params.value}
+
         </div>
       )
     },
@@ -51,8 +46,37 @@ const SearchResult = ({ nameRepos }) => {
     { field: 'dateUpdate', headerName: 'Дата обнавления', width: 130 },
   ];
 
-  // console.log(activeIdRepo)
+  const DescriptionRepo = (activeId) => {
 
+    const selectedRepo = data?.items?.find(item => item.id === activeId);
+    // console.log('data', data)
+    // console.log('items', data.items)
+    // return (
+    //   <div>
+    //     <h2>Название репозитория</h2>
+    //     <p>{selectedRepo ? selectedRepo.name : 'Выберете репозиторий'}</p>
+    //   </div>
+    // );
+    if (selectedRepo) {
+      return (
+        <div>
+          <h2>{selectedRepo.name}</h2>
+          {/* <p>Название: {repoDetails.name}</p> */}
+          <p>Описание: {selectedRepo.description}</p>
+          <p>Язык: {selectedRepo.language}</p>
+          <p>Количество звезд: {selectedRepo.stargazers_count}</p>
+          <p>Лицензия: {selectedRepo.license ? selectedRepo.license.name : ''}</p>
+          {/* Добавьте отображение других необходимых деталей */}
+        </div>
+      );
+    } else {
+      return <div>Выберите репозиторий</div>;
+    }
+
+  };
+
+  console.log('data', data)
+  console.log('activeIdRepo', activeIdRepo)
   return (
     <div>
       <div className="row">
@@ -62,7 +86,8 @@ const SearchResult = ({ nameRepos }) => {
         </Box>
       </div>
       <div className="result">
-        <DescriptionRepo activeRepoData={activeRepoData} />
+        {DescriptionRepo(activeIdRepo)}
+        {/* <DescriptionRepo activeId={activeIdRepo} /> */}
       </div>
     </div>
   );
