@@ -14,12 +14,10 @@ const dateParse = (isoDate) => {
   return formattedDate;
 }
 
-const SearchResult = () => {
-  const defaultRepo = { id: 1, name: 'Название репозитория', language: 'Phyton', forks: 8, stars: 36, dateUpdate: '00.00.0000' };
+const SearchResult = ({ nameRepos }) => {
 
-  const { data } = useGetReposQuery(defaultRepo);
+  const { data } = useGetReposQuery(nameRepos);
 
-  // const rows = { id: 1, name: 'Название репозитория', language: 'Phyton', forks: 8, stars: 36, dateUpdate: '00.00.0000' };
   const rows = data.items.map(item => ({
     id: item.id,
     name: item.name,
@@ -28,7 +26,6 @@ const SearchResult = () => {
     stars: item.stargazers_count,
     dateUpdate: dateParse(item.updated_at),
   }));
-  // const getFullName = (value, row) => `${row.firstName || ''} ${row.lastName || ''}`;
 
   const columns = [
     { field: 'name', headerName: 'Название', width: 130 },
@@ -36,14 +33,8 @@ const SearchResult = () => {
     { field: 'forks', headerName: 'Число форков', width: 130 },
     { field: 'stars', headerName: 'Число звезд', width: 130 },
     { field: 'dateUpdate', headerName: 'Дата обнавления', width: 130 },
-    // {
-    //   field: 'fullName',
-    //   headerName: 'Full name',
-
-    //   width: 160,
-    //   valueGetter: getFullName,
-    // },
   ];
+
   return (
     <div>
       <div className="row">
