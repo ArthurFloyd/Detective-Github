@@ -1,7 +1,9 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+
 import { useGetReposQuery } from '../api/githubReposApi';
+import DescriptionRepo from './DescriptionRepo';
 
 const dateParse = (isoDate) => {
   const date = new Date(isoDate);
@@ -16,6 +18,8 @@ const dateParse = (isoDate) => {
 
 const SearchResult = ({ nameRepos }) => {
 
+  const [activeRepoData, setActiveRepoData] = useState({});
+
   const { data } = useGetReposQuery(nameRepos);
 
   const rows = data.items.map(item => ({
@@ -24,16 +28,30 @@ const SearchResult = ({ nameRepos }) => {
     language: item.language,
     forks: item.forks,
     stars: item.stargazers_count,
+    // license: item.license.name,
     dateUpdate: dateParse(item.updated_at),
   }));
 
   const columns = [
-    { field: 'name', headerName: 'Название', width: 130 },
+    {
+      field: 'name', headerName: 'Название', width: 130, renderCell: (params) => (
+        <div onClick={() => setActiveRepoData({
+          name: params.row.name,
+          language: params.row.language,
+          stars: params.row.stars,
+          // license: params.row.license,
+        })}>
+          {params.value}
+        </div>
+      )
+    },
     { field: 'language', headerName: 'Язык', width: 130 },
     { field: 'forks', headerName: 'Число форков', width: 130 },
     { field: 'stars', headerName: 'Число звезд', width: 130 },
     { field: 'dateUpdate', headerName: 'Дата обнавления', width: 130 },
   ];
+
+  // console.log(activeIdRepo)
 
   return (
     <div>
@@ -44,7 +62,7 @@ const SearchResult = ({ nameRepos }) => {
         </Box>
       </div>
       <div className="result">
-        Выберете репозиторий
+        <DescriptionRepo activeRepoData={activeRepoData} />
       </div>
     </div>
   );

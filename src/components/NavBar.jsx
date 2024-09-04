@@ -6,9 +6,6 @@ import {
 import { useGetReposQuery } from '../api/githubReposApi';
 import SearchResult from './SearchResult';
 import HomePage from './Home';
-// import { store } from '../store/index.js';
-
-// const defaultRepo = { items: [{ id: 1, name: 'Название репозитория', language: 'Phyton', forks: 8, stars: 36, dateUpdate: '00.00.0000' }] };
 
 const NavBar = () => {
   const [nameRepos, setNameRepos] = useState('');
@@ -20,7 +17,7 @@ const NavBar = () => {
   }, []);
 
   const { data } = useGetReposQuery(nameRepos);
-
+  console.log(data)
   return (
     <div>
       <div>
@@ -42,7 +39,6 @@ const NavBar = () => {
               <Button
                 variant="contained"
                 onClick={() => {
-                  // console.log('data', data);
                   setIsClick(true);
                 }}
                 sx={{
@@ -59,10 +55,6 @@ const NavBar = () => {
         {isClick === false ? <HomePage /> : <SearchResult
           nameRepos={nameRepos}
         />}
-
-        {/* <SearchResult
-          nameRepos={nameRepos}
-        /> */}
       </div>
     </div>
   );
