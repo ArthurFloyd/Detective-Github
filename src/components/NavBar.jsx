@@ -20,9 +20,9 @@ const NavBar = () => {
   // console.log(data)
   return (
     <div>
-      <div>
+      <div className='nav'>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" sx={{ width: 1440, height: 80, background: '#739ab9' }}>
+          <AppBar position="static" sx={{ marginTop: 0, width: 1440, height: 80, background: '#739ab9' }}>
             <Toolbar>
               <form noValidate autoComplete="off">
                 <FormControl ref={inputRef}>
@@ -56,7 +56,7 @@ const NavBar = () => {
           nameRepos={nameRepos}
         />}
       </div>
-    </div>
+    </div >
   );
 };
 

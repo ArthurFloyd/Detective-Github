@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
 import { useGetReposQuery } from '../api/githubReposApi';
-import DescriptionRepo from './DescriptionRepo';
+// import DescriptionRepo from './DescriptionRepo';
 
 const dateParse = (isoDate) => {
   const date = new Date(isoDate);
@@ -22,7 +22,7 @@ const SearchResult = ({ nameRepos }) => {
 
   const { data } = useGetReposQuery(nameRepos);
 
-  const rows = data.items.map(item => ({
+  const rows = data?.items?.map(item => ({
     id: item.id,
     name: item.name,
     language: item.language,
@@ -36,7 +36,6 @@ const SearchResult = ({ nameRepos }) => {
       field: 'name', headerName: 'Название', width: 130, renderCell: (params) => (
         <div onClick={() => setActiveIdRepo(params.row.id)}>
           {params.value}
-
         </div>
       )
     },
@@ -49,24 +48,14 @@ const SearchResult = ({ nameRepos }) => {
   const DescriptionRepo = (activeId) => {
 
     const selectedRepo = data?.items?.find(item => item.id === activeId);
-    // console.log('data', data)
-    // console.log('items', data.items)
-    // return (
-    //   <div>
-    //     <h2>Название репозитория</h2>
-    //     <p>{selectedRepo ? selectedRepo.name : 'Выберете репозиторий'}</p>
-    //   </div>
-    // );
     if (selectedRepo) {
       return (
         <div>
           <h2>{selectedRepo.name}</h2>
-          {/* <p>Название: {repoDetails.name}</p> */}
           <p>Описание: {selectedRepo.description}</p>
           <p>Язык: {selectedRepo.language}</p>
           <p>Количество звезд: {selectedRepo.stargazers_count}</p>
           <p>Лицензия: {selectedRepo.license ? selectedRepo.license.name : ''}</p>
-          {/* Добавьте отображение других необходимых деталей */}
         </div>
       );
     } else {
@@ -78,16 +67,15 @@ const SearchResult = ({ nameRepos }) => {
   console.log('data', data)
   console.log('activeIdRepo', activeIdRepo)
   return (
-    <div>
-      <div className="row">
+    <div className='search'>
+      <div className='result'>
         <h1>Результаты поиска</h1>
-        <Box sx={{ left: 32, height: 912, width: 912 }}>
+        <Box className="table" sx={{ left: 32, height: 912, width: 912 }}>
           <DataGrid rows={rows} columns={columns} />
         </Box>
       </div>
-      <div className="result">
+      <div className='description'>
         {DescriptionRepo(activeIdRepo)}
-        {/* <DescriptionRepo activeId={activeIdRepo} /> */}
       </div>
     </div>
   );
