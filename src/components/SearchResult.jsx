@@ -20,7 +20,11 @@ const SearchResult = ({ nameRepos }) => {
 
   const [activeIdRepo, setActiveIdRepo] = useState(null);
 
-  const { data } = useGetReposQuery(nameRepos);
+  const { data, isLoading, isError } = useGetReposQuery(nameRepos);
+
+  if (isLoading) return <div>Loading...</div>
+
+  if (isError) return <div>An error has occurred!</div>
 
   const rows = data?.items?.map(item => ({
     id: item.id,
@@ -50,7 +54,7 @@ const SearchResult = ({ nameRepos }) => {
     const selectedRepo = data?.items?.find(item => item.id === activeId);
     if (selectedRepo) {
       return (
-        <div>
+        <div className='dis-txt'>
           <h2>{selectedRepo.name}</h2>
           <p>Описание: {selectedRepo.description}</p>
           <p>Язык: {selectedRepo.language}</p>
@@ -63,9 +67,8 @@ const SearchResult = ({ nameRepos }) => {
     }
 
   };
-
-  console.log('data', data)
-  console.log('activeIdRepo', activeIdRepo)
+  // console.log('data', data)
+  // console.log('activeIdRepo', activeIdRepo)
   return (
     <div className='search'>
       <div className='result'>

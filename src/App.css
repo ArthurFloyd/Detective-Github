@@ -1,3 +1,8 @@
+body {
+  font-family: Roboto, sans-serif;
+
+}
+
 div.search {
   /* width: 200px; */
   display: flex;
@@ -16,9 +21,14 @@ div.search {
 }
 
 .description {
-  background: #F2F2F2;
+  /* background: #F2F2F2; */
   width: 480px;
   height: auto;
+}
 
+.dis-txt {
+  color: #333;
+  text-align: center;
+  /* font-family: Georgia, "Times New Roman"; */
 
 }
