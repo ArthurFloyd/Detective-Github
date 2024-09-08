@@ -17,7 +17,7 @@ const NavBar = () => {
   }, []);
 
   const { data } = useGetReposQuery(nameRepos);
-  // console.log(data)
+  console.log(data)
   return (
     <div>
       <div className='nav'>

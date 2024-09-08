@@ -3,16 +3,72 @@ body {
 
 }
 
+.wlcm {
+  display: flex;
+  justify-content: center;
+  padding: 250px;
+  font-size: 46px;
+  font-weight: 400px;
+  color: #4F4F4F;
+}
+
+.spiner {
+  display: flex;
+  justify-content: center;
+  padding: 250px;
+  size: 250px;
+}
+
+.err {
+  display: flex;
+  justify-content: center;
+  padding: 250px;
+  font-size: 46px;
+  font-weight: 400px;
+  color: #4F4F4F;
+}
+
+.empt-des {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  padding-top: 400px;
+  color: #4F4F4F;
+
+}
+
 div.search {
   /* width: 200px; */
   display: flex;
   justify-content: space-between;
 }
 
-/* div.result {
+.result-text {
+  font-size: 36px;
+  font-weight: 400px;
+  color: #4F4F4F;
+}
+
+
+.info {
   display: flex;
-  align-items: spa;
-} */
+  justify-content: space-between;
+}
+
+.strs {
+  display: flex;
+  flex-direction: row;
+}
+
+.str-count {
+  padding: 2px 4px;
+}
+
+.license {
+  display: flex;
+  justify-self: start;
+  color: #333;
+}
 
 .table {
   display: flex;

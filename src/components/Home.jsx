@@ -1,6 +1,6 @@
 const HomePage = () => (
   <div>
-    <p className="t">Добро пожаловать</p>
+    <p className="wlcm">Добро пожаловать</p>
   </div>
 );
 

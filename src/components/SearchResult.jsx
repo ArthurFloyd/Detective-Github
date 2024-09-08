@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
+import { Box, Chip, CircularProgress } from '@mui/material';
+import StarSharpIcon from '@mui/icons-material/StarSharp';
 import { DataGrid } from '@mui/x-data-grid';
 
 import { useGetReposQuery } from '../api/githubReposApi';
@@ -22,9 +23,9 @@ const SearchResult = ({ nameRepos }) => {
 
   const { data, isLoading, isError } = useGetReposQuery(nameRepos);
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <CircularProgress className='spiner' />
 
-  if (isError) return <div>An error has occurred!</div>
+  if (isError) return <div className='err'>Not Found :(</div>
 
   const rows = data?.items?.map(item => ({
     id: item.id,
@@ -56,14 +57,21 @@ const SearchResult = ({ nameRepos }) => {
       return (
         <div className='dis-txt'>
           <h2>{selectedRepo.name}</h2>
-          <p>Описание: {selectedRepo.description}</p>
-          <p>Язык: {selectedRepo.language}</p>
-          <p>Количество звезд: {selectedRepo.stargazers_count}</p>
-          <p>Лицензия: {selectedRepo.license ? selectedRepo.license.name : ''}</p>
+          <p>{selectedRepo.description}</p>
+          <div className='info'>
+            {selectedRepo.language ?
+              <Chip sx={{ background: '#2196F3', color: '#fff' }} label={selectedRepo.language} /> :
+              <p>{''}</p>}
+            <div className='strs'>
+              <StarSharpIcon sx={{ color: '#FFB400' }} />
+              <div className='str-count' >{selectedRepo.stargazers_count}</div>
+            </div>
+          </div>
+          <p className='license'>{selectedRepo.license ? selectedRepo.license.name : ''}</p>
         </div>
       );
     } else {
-      return <div>Выберите репозиторий</div>;
+      return <div className='empt-des'>Выберите репозиторий</div>;
     }
 
   };
@@ -72,7 +80,7 @@ const SearchResult = ({ nameRepos }) => {
   return (
     <div className='search'>
       <div className='result'>
-        <h1>Результаты поиска</h1>
+        <p className='result-text'>Результаты поиска</p>
         <Box className="table" sx={{ left: 32, height: 912, width: 912 }}>
           <DataGrid rows={rows} columns={columns} />
         </Box>
