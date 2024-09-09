@@ -81,7 +81,7 @@ const SearchResult = ({ nameRepos }) => {
     <div className='search'>
       <div className='result'>
         <p className='result-text'>Результаты поиска</p>
-        <Box className="table" sx={{ left: 32, height: 912, width: 912 }}>
+        <Box className="table">
           <DataGrid rows={rows} columns={columns} />
         </Box>
       </div>
