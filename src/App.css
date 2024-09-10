@@ -14,7 +14,7 @@ body {
 .wlcm {
   display: flex;
   justify-content: center;
-  padding: 250px;
+  padding-top: 300px;
   font-size: 46px;
   font-weight: 400px;
   color: #4F4F4F;
