@@ -37,17 +37,11 @@ const SearchResult = ({ nameRepos }) => {
   }));
 
   const columns = [
-    {
-      field: 'name', headerName: 'Название', width: 130, renderCell: (params) => (
-        <div onClick={() => setActiveIdRepo(params.row.id)}>
-          {params.value}
-        </div>
-      )
-    },
-    { field: 'language', headerName: 'Язык', width: 130 },
-    { field: 'forks', headerName: 'Число форков', width: 130 },
-    { field: 'stars', headerName: 'Число звезд', width: 130 },
-    { field: 'dateUpdate', headerName: 'Дата обнавления', width: 130 },
+    { field: 'name', headerName: 'Название', width: 182 },
+    { field: 'language', headerName: 'Язык', width: 182 },
+    { field: 'forks', headerName: 'Число форков', width: 182 },
+    { field: 'stars', headerName: 'Число звезд', width: 182 },
+    { field: 'dateUpdate', headerName: 'Дата обнавления', width: 182 },
   ];
 
   const DescriptionRepo = (activeId) => {
@@ -82,7 +76,8 @@ const SearchResult = ({ nameRepos }) => {
       <div className='result'>
         <p className='result-text'>Результаты поиска</p>
         <Box className="table">
-          <DataGrid rows={rows} columns={columns} />
+          <DataGrid rows={rows} columns={columns} onRowClick={(params) => setActiveIdRepo(params.row.id)}
+          />
         </Box>
       </div>
       <div className='description'>
