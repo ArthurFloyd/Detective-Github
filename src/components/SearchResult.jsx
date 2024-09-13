@@ -4,7 +4,6 @@ import StarSharpIcon from '@mui/icons-material/StarSharp';
 import { DataGrid } from '@mui/x-data-grid';
 
 import { useGetReposQuery } from '../api/githubReposApi';
-// import DescriptionRepo from './DescriptionRepo';
 
 const dateParse = (isoDate) => {
   const date = new Date(isoDate);
@@ -69,8 +68,7 @@ const SearchResult = ({ nameRepos }) => {
     }
 
   };
-  // console.log('data', data)
-  // console.log('activeIdRepo', activeIdRepo)
+
   return (
     <div className='search'>
       <div className='result'>

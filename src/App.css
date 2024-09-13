@@ -4,9 +4,6 @@ body {
 }
 
 .app-bar {
-  /* display: flex;
-  align-content: start; */
-  /* margin-top: 0px; */
   width: 1440px;
   height: 80px;
 }
@@ -46,17 +43,13 @@ body {
 }
 
 div.search {
-  /* width: 200px; */
   margin: 80px 0px 0px 10px;
   display: flex;
   justify-content: space-between;
-  /* align-items: stretch; */
-  /* margin-left: 10px; */
 }
 
 .table {
   height: 570px;
-  /* overflow-x: auto; */
   width: 912px;
 
 }
@@ -95,16 +88,10 @@ div.search {
 }
 
 .description {
-  /* background: #F2F2F2; */
   width: 480px;
-  /* padding: 0px; */
-  /* height: auto; */
-  /* background-color: gray; */
 }
 
 .dis-txt {
   color: #333;
   text-align: center;
-  /* font-family: Georgia, "Times New Roman"; */
-
 }
