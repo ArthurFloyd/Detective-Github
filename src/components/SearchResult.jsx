@@ -15,7 +15,7 @@ const dateParse = (isoDate) => {
 
   return formattedDate;
 }
-
+// TODO: make pagination
 const SearchResult = ({ nameRepos }) => {
 
   const [activeIdRepo, setActiveIdRepo] = useState(null);
