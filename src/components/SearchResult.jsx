@@ -43,8 +43,7 @@ const SearchResult = ({ nameRepos }) => {
     { field: 'dateUpdate', headerName: 'Дата обнавления', width: 182 },
   ];
 
-  const DescriptionRepo = (activeId) => {
-
+  const DescriptionRepo = ({ activeId, data }) => {
     const selectedRepo = data?.items?.find(item => item.id === activeId);
     if (selectedRepo) {
       return (
@@ -79,7 +78,7 @@ const SearchResult = ({ nameRepos }) => {
         </Box>
       </div>
       <div className='description'>
-        {DescriptionRepo(activeIdRepo)}
+        <DescriptionRepo activeId={activeIdRepo} data={data} />
       </div>
     </div>
   );

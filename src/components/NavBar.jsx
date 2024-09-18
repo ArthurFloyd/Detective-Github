@@ -55,9 +55,7 @@ const NavBar = () => {
         </Box>
       </div>
       <div>
-        {isClick === false ? <HomePage /> : <SearchResult
-          nameRepos={nameRepos}
-        />}
+        {isClick ? <SearchResult nameRepos={nameRepos} /> : <HomePage />}
       </div>
     </div >
   );
