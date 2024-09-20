@@ -48,6 +48,7 @@ const SearchResult = ({ nameRepos }) => {
     if (selectedRepo) {
       return (
         <div className='dis-txt'>
+          <p></p>
           <h2>{selectedRepo.name}</h2>
           <p>{selectedRepo.description}</p>
           <div className='info'>
