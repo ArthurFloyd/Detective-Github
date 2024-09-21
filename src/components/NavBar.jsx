@@ -15,7 +15,6 @@ const NavBar = () => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-  // TODO: fix
   const { data } = useGetReposQuery(nameRepos);
   console.log(data)
   return (
